@@ -6,6 +6,7 @@ import android.view.translation.ViewTranslationRequest
 import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
 import android.widget.ListView
+import android.widget.Toast
 import com.androidtest.coderswag.Adapters.CategoryAdapter
 import com.androidtest.coderswag.Model.Category
 import com.androidtest.coderswag.R
@@ -14,6 +15,7 @@ import com.androidtest.coderswag.Services.DataService
 class MainActivity : AppCompatActivity() {
 
     lateinit var adapter: CategoryAdapter
+
     // lateinit var adapter: ArrayAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,5 +28,10 @@ class MainActivity : AppCompatActivity() {
         val categoryListView = findViewById<ListView>(R.id.categoryListView)
         categoryListView.adapter = adapter
 
+        // will not work with RecyclerView
+        // categoryListView.setOnItemClickListener { adapterView, view, position, id ->
+        // val category = DataService.categories[position]
+        // Toast.makeText(this, "You clicked on ${category.title} cell", Toast.LENGTH_SHORT).show()
+        // }
     }
 }
