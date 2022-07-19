@@ -7,14 +7,17 @@ import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
 import android.widget.ListView
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidtest.coderswag.Adapters.CategoryAdapter
+import com.androidtest.coderswag.Adapters.CategoryRecycleAdapter
 import com.androidtest.coderswag.Model.Category
 import com.androidtest.coderswag.R
 import com.androidtest.coderswag.Services.DataService
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var adapter: CategoryAdapter
+    lateinit var adapter: CategoryRecycleAdapter
+//    lateinit var adapter: CategoryAdapter
 
     // lateinit var adapter: ArrayAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +26,8 @@ class MainActivity : AppCompatActivity() {
 
         // adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1,DataService.categories)
 
-        adapter = CategoryAdapter(this, DataService.categories)
+        adapter = CategoryRecycleAdapter(this, DataService.categories)
+        // adapter = CategoryAdapter(this, DataService.categories)
 
         val categoryListView = findViewById<ListView>(R.id.categoryListView)
         categoryListView.adapter = adapter
@@ -33,5 +37,11 @@ class MainActivity : AppCompatActivity() {
         // val category = DataService.categories[position]
         // Toast.makeText(this, "You clicked on ${category.title} cell", Toast.LENGTH_SHORT).show()
         // }
+
+
+        // NEED LAYOUT MANAGER for recycleAdapter
+        val layoutManager = LinearLayoutManager(this)
+        categoryListView.layoutManager=layoutManager
+        categoryListView.setHasFixedSize(true)
     }
 }
