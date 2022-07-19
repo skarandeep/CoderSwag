@@ -14,10 +14,12 @@ import com.androidtest.coderswag.Services.DataService
 class MainActivity : AppCompatActivity() {
 
     lateinit var adapter: CategoryAdapter
-
+    // lateinit var adapter: ArrayAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1,DataService.categories)
 
         adapter = CategoryAdapter(this, DataService.categories)
 
