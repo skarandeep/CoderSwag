@@ -41,4 +41,9 @@ class CategoryAdapter(val context: Context, val categories: List<Category>) : Ba
     override fun getCount(): Int {
         return categories.count()
     }
+
+    private class ViewHolder {
+        var categoryImage: ImageView? = null
+        var categoryName: TextView? = null
+    }
 }
